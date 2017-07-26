@@ -1,6 +1,8 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
+
 
 <dom-module id="js-person">
   <template>
@@ -8,16 +10,47 @@
       :host {
         display: block;
       }
+      paper-icon-item{
+        padding: 10px 16px;
+        background-color: var(--paper-teal-50);
+      }
+      paper-icon-item[empty] paper-item-body{
+        width: 100%;
+      }
+      paper-icon-item[empty] paper-item-body div {
+        height: 17px;
+        width: 100%;
+        border-radius: 2px;
+        line-height: 1rem;
+        background-color: var(--paper-teal-200);
+      }
+      paper-icon-item[empty] paper-item-body div[secondary]{
+        margin-top: 9px;
+      }
+      .avatar {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .teal {
+        background-color: var(--paper-teal-200);
+      }
+      paper-icon-item[focused]{
+        background-color: var(--paper-teal-100);
+      }
     </style>
 
-    <paper-icon-item empty>
-      <iron-icon icon="menu" slot="item-icon">
+    <paper-icon-item id="person" empty>
+      <iron-icon class="avatar teal" slot="item-icon">
       </iron-icon>
       <paper-item-body two-lines>
           <div>[[name]]</div>
-          <div secondary>[[birthdate]]</div>
+          <div secondary>[[computeBirthdate(birthdate)]]</div>
       </paper-item-body>
     </paper-icon-item>
+
   </template>
 
   <script>
@@ -53,6 +86,20 @@
             type: String
           }
         };
+      }
+      static get observers() {
+        return [
+                'removeEmptyAttr(name, birthdate)'
+               ];
+      }
+      computeBirthdate(birthdate) {
+        if (birthdate)
+          return new Date(birthdate).toLocaleDateString();
+        return '';
+      }
+      removeEmptyAttr(name, birthdate){
+        if(name && birthdate)
+          this.$.person.removeAttribute('empty');
       }
     }
 
