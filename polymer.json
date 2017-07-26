@@ -1,0 +1,13 @@
+{
+  "name": "js-person",
+  "description": "Person information card",
+  "main": "js-person.html",
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  },
+  "dependencies": {
+    "paper-item": "PolymerElements/paper-item#^2.0.0"
+  }
+}
