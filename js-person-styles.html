@@ -1,0 +1,38 @@
+<dom-module id="js-person-styles">
+    <template>
+        <style>
+            paper-icon-item{
+              padding: 10px 16px;
+              background-color: var(--paper-teal-50);
+              color: var(--paper-teal-700);
+            }
+            paper-icon-item[empty] paper-item-body{
+              width: 100%;
+            }
+            paper-icon-item[empty] paper-item-body div {
+              height: 17px;
+              width: 100%;
+              border-radius: 2px;
+              line-height: 1rem;
+              background-color: var(--paper-teal-700);
+            }
+            paper-icon-item[empty] paper-item-body div[secondary]{
+              margin-top: 9px;
+            }
+            .avatar {
+              display: inline-block;
+              box-sizing: border-box;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+            }
+            .teal {
+              border: 1px solid var(--paper-teal-700);
+            }
+            #person:not([empty]) .avatar{
+              padding-top: 0.5rem;
+              text-align: center;
+            }
+        </style>
+    <template>
+<dom-module>
